@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Pastikan axios sudah terinstall
 import './FeaturedRooms.css';
+import Spinner from './Spinner';
 
 const FeaturedRooms = () => {
   // State untuk menyimpan data kamar, status loading, dan error
