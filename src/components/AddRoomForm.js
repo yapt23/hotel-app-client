@@ -4,7 +4,6 @@ import axios from 'axios';
 import './AddRoomForm.css';
 
 const AddRoomForm = ({ onRoomAdded }) => {
-    // State untuk text input
     const [textData, setTextData] = useState({
         name: '',
         description: '',
@@ -12,8 +11,10 @@ const AddRoomForm = ({ onRoomAdded }) => {
         maxGuests: '',
         facilities: '',
     });
-    // State terpisah untuk file gambar
     const [images, setImages] = useState(null);
+
+    // Ambil URL API dari environment variable
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleTextChange = (e) => {
         setTextData({ ...textData, [e.target.name]: e.target.value });
@@ -32,7 +33,6 @@ const AddRoomForm = ({ onRoomAdded }) => {
             return;
         }
 
-        // Kita gunakan FormData karena ada file upload
         const formData = new FormData();
         formData.append('name', textData.name);
         formData.append('description', textData.description);
@@ -49,12 +49,13 @@ const AddRoomForm = ({ onRoomAdded }) => {
         const config = {
             headers: {
                 'Authorization': token,
-                'Content-Type': 'multipart/form-data' // Penting untuk file upload
+                'Content-Type': 'multipart/form-data'
             }
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/rooms', formData, config);
+            // Gunakan apiUrl untuk endpoint create
+            const response = await axios.post(`${apiUrl}/api/rooms`, formData, config);
             alert(response.data.message);
             onRoomAdded();
         } catch (error) {
@@ -72,7 +73,6 @@ const AddRoomForm = ({ onRoomAdded }) => {
                 <input name="maxGuests" type="number" value={textData.maxGuests} onChange={handleTextChange} placeholder="Kapasitas Tamu" required />
                 <input name="facilities" value={textData.facilities} onChange={handleTextChange} placeholder="Fasilitas (pisahkan dengan koma)" />
                 
-                {/* Input untuk gambar diubah menjadi type="file" */}
                 <label>Gambar Kamar (bisa lebih dari satu)</label>
                 <input name="images" type="file" onChange={handleFileChange} multiple />
                 

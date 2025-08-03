@@ -21,10 +21,14 @@ const RoomDetailPage = () => {
     const [guestEmail, setGuestEmail] = useState('');
     const [availability, setAvailability] = useState({ status: 'idle', message: '' });
 
+    // Ambil URL API dari environment variable
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     useEffect(() => {
         const fetchRoomDetail = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/rooms/${id}`);
+                // Gunakan apiUrl untuk memanggil API
+                const response = await axios.get(`${apiUrl}/api/rooms/${id}`);
                 setRoom(response.data);
             } catch (err) {
                 setError('Gagal memuat detail kamar atau kamar tidak ditemukan.');
@@ -34,7 +38,7 @@ const RoomDetailPage = () => {
             }
         };
         fetchRoomDetail();
-    }, [id]);
+    }, [id, apiUrl]); // Tambahkan apiUrl sebagai dependency
 
     const handleCheckAvailability = async () => {
         if (!checkInDate || !checkOutDate) {
@@ -43,7 +47,7 @@ const RoomDetailPage = () => {
         }
         setAvailability({ status: 'checking', message: '' });
         try {
-            const response = await axios.post('http://localhost:5000/api/bookings/check-availability', {
+            const response = await axios.post(`${apiUrl}/api/bookings/check-availability`, {
                 roomId: room._id,
                 checkInDate,
                 checkOutDate
@@ -87,7 +91,7 @@ const RoomDetailPage = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/bookings', bookingData);
+            const response = await axios.post(`${apiUrl}/api/bookings`, bookingData);
             alert(response.data.message + " Detail akan dikirim ke email Anda.");
             navigate('/'); // Arahkan ke homepage setelah booking sukses
         } catch (err) {
@@ -104,10 +108,11 @@ const RoomDetailPage = () => {
         <div className="room-detail-container">
             <h1>{room.name}</h1>
             <div className="image-gallery">
-                <img src={`http://localhost:5000${room.images[0]}`} alt={room.name} className="main-image" />
+                {/* Gunakan apiUrl untuk path gambar */}
+                <img src={`${apiUrl}${room.images[0]}`} alt={room.name} className="main-image" />
                 <div className="thumbnail-images">
                     {room.images.slice(1).map((img, index) => (
-                        <img key={index} src={`http://localhost:5000${img}`} alt={`${room.name} thumbnail ${index + 1}`} />
+                        <img key={index} src={`${apiUrl}${img}`} alt={`${room.name} thumbnail ${index + 1}`} />
                     ))}
                 </div>
             </div>

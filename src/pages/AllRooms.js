@@ -10,10 +10,14 @@ const AllRooms = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Ambil URL API dari environment variable
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchAllRooms = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/rooms');
+        // Gunakan variabel apiUrl untuk memanggil API
+        const response = await axios.get(`${apiUrl}/api/rooms`);
         setRooms(response.data);
       } catch (err) {
         setError('Gagal memuat data kamar.');
@@ -24,7 +28,7 @@ const AllRooms = () => {
     };
 
     fetchAllRooms();
-  }, []);
+  }, [apiUrl]); // Tambahkan apiUrl sebagai dependency
 
   if (loading) return <Spinner />;
   if (error) return <div className="page-status error">{error}</div>;
@@ -40,7 +44,8 @@ const AllRooms = () => {
         {rooms.map(room => (
           <div key={room._id} className="room-card-v2">
             <img 
-                src={room.images[0] ? `http://localhost:5000${room.images[0]}` : 'https://via.placeholder.com/400x300.png?text=No+Image'}
+                // Gunakan variabel apiUrl untuk path gambar
+                src={room.images[0] ? `${apiUrl}${room.images[0]}` : 'https://via.placeholder.com/400x300.png?text=No+Image'}
                 alt={room.name} 
                 className="room-card-img"
             />
