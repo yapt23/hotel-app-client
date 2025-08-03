@@ -1,10 +1,11 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Impor Komponen dan Halaman
-import PublicLayout from './components/PublicLayout'; // Impor layout baru
+// Impor Komponen dan Halaman dari path yang benar
+import PublicLayout from './components/PublicLayout';
 import ProtectedRoute from './components/ProtectedRoute';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage'; // <-- pastikan ini dari ./pages/
 import AllRooms from './pages/AllRooms';
 import RoomDetailPage from './pages/RoomDetailPage';
 import AdminPage from './pages/AdminPage';
@@ -16,17 +17,16 @@ import './App.css';
 function App() {
   return (
     <Router>
-      {/* Navbar sudah tidak ada di sini */}
       <div className="App">
         <Routes>
-          {/* === Rute Publik (Dengan Navbar) === */}
+          {/* Rute Publik (Dengan Navbar) */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/rooms" element={<AllRooms />} />
             <Route path="/rooms/:id" element={<RoomDetailPage />} />
           </Route>
 
-          {/* === Rute Admin & Login (Tanpa Navbar) === */}
+          {/* Rute Admin & Login (Tanpa Navbar) */}
           <Route path="/login" element={<LoginPage />} />
           <Route 
             path="/admin" 
@@ -36,7 +36,6 @@ function App() {
               </ProtectedRoute>
             } 
           />
-          {/* Rute Edit yang Dilindungi */}
           <Route 
             path="/admin/edit-room/:id" 
             element={
