@@ -1,0 +1,51 @@
+/* src/components/FeaturedRooms.css */
+.featured-rooms-container {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.featured-rooms-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.rooms-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.room-card {
+  width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #f9f9f9;
+  transition: transform 0.3s;
+}
+
+.room-card:hover {
+  transform: translateY(-10px);
+}
+
+.room-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.room-info {
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .rooms-list {
+        flex-direction: column; /* Susun kartu kamar ke bawah */
+        align-items: center;
+    }
+
+    .featured-rooms-container h2 {
+        font-size: 2rem;
+    }
+}

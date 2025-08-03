@@ -1,0 +1,168 @@
+/* src/pages/RoomDetailPage.css */
+.room-detail-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.room-detail-container h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.image-gallery .main-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.thumbnail-images {
+  display: flex;
+  gap: 10px;
+}
+.thumbnail-images img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.details-content {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+.main-details {
+  flex: 3; /* Ambil 3 bagian dari ruang */
+}
+.main-details h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.facilities-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+.facilities-grid li {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+.booking-box {
+  flex: 1; /* Ambil 1 bagian dari ruang */
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  height: fit-content;
+  text-align: center;
+}
+.booking-box .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #E0B973;
+  margin: 0;
+}
+.booking-box .price-label {
+  margin-top: 0;
+  color: #777;
+}
+.book-now-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  background: #E0B973;
+  color: #141414;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.book-now-button:hover {
+  background-color: #c8a462;
+}
+
+.booking-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.check-availability-button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.availability-status {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+.availability-status.available {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+.availability-status.unavailable {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+@media screen and (max-width: 768px) {
+    .details-content {
+        flex-direction: column; /* Susun layout ke bawah */
+    }
+
+    .room-detail-container h1 {
+        font-size: 2.2rem;
+    }
+
+    .image-gallery .main-image {
+        height: 250px; /* Kurangi tinggi gambar utama */
+    }
+}
+
+.datepicker-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}

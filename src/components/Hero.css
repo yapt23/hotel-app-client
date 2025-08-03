@@ -1,0 +1,54 @@
+/* src/components/Hero.css */
+.hero-container {
+  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop');
+  /* Ubah tinggi menjadi 100vh agar mengisi seluruh layar */
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: #E0B973;
+  color: #141414;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #c8a462;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem; /* Perkecil ukuran judul */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+}

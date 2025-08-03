@@ -1,0 +1,119 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  background: #222; /* Kita kembalikan background solid untuk navbar sticky */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 5%;
+}
+
+.navbar-logo {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Styling untuk Menu versi Mobile (default) */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 80px); /* Tinggi penuh dikurangi tinggi navbar */
+  position: absolute;
+  top: 80px;
+  left: -100%; /* Sembunyikan di luar layar kiri */
+  opacity: 1;
+  transition: all 0.5s ease;
+  background: #222;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu.active {
+  left: 0; /* Pindahkan ke dalam layar saat aktif */
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.nav-item {
+  width: 100%;
+  border-bottom: 1px solid #444;
+}
+
+.nav-links {
+  display: block; /* Agar link mengisi seluruh area li */
+  text-align: center;
+  padding: 2rem 0;
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links:hover {
+  background-color: #E0B973;
+  color: #141414;
+  transition: all 0.3s ease-out;
+}
+
+/* Styling untuk Ikon Burger */
+.menu-icon {
+  display: block; /* Munculkan ikon di mobile */
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Media Query untuk Desktop (layar lebih besar) */
+@media screen and (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Sembunyikan ikon burger di desktop */
+  }
+
+  .nav-menu {
+    position: static; /* Kembalikan posisi normal */
+    display: flex;
+    flex-direction: row; /* Susun menu ke samping */
+    width: auto;
+    height: auto;
+    background: transparent;
+    left: auto;
+    transition: none;
+  }
+  
+  .nav-item {
+    height: 80px;
+    border: none;
+  }
+
+  .nav-links {
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links:hover {
+    background: none;
+    border-bottom: 4px solid #E0B973;
+    color: #fff;
+  }
+}

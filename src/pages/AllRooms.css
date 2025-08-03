@@ -1,0 +1,125 @@
+/* src/pages/AllRooms.css */
+.page-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: auto;
+}
+
+.page-status {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #555;
+}
+.page-status.error {
+  color: #d9534f;
+}
+
+/* Grid Layout untuk Kamar */
+.rooms-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 40px;
+}
+
+/* Desain Kartu Kamar yang Baru */
+.room-card-v2 {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.room-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.room-card-body {
+  padding: 25px;
+}
+
+.room-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.room-card-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.room-card-price span {
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.room-card-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 75px; /* Memberi tinggi minimum agar layout stabil */
+}
+
+.room-card-button {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  background-color: #343a40;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.room-card-button:hover {
+  background-color: #E0B973;
+  color: #141414;
+}
+
+@media screen and (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem; /* Perkecil ukuran judul halaman */
+    }
+
+    .rooms-content-grid {
+        /* Perkecil celah antar kartu di layar kecil */
+        gap: 25px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
